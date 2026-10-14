@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeloMind | Your Feelings Matter</title>
+    <link rel="stylesheet" href="gesture.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="gesture.html">
+            <span class="brand-icon">♡</span>
+            <span>
+                <strong>MeloMind</strong>
+                <small>Your feelings matter</small>
+            </span>
+        </a>
+
+        <nav class="navigation">
+            <a class="active" href="gesture.html">⌂ Home</a>
+            <a href="#chatPanel">☏ Chat</a>
+            <a href="#moodPanel">✧ Mood Mirror</a>
+            <a href="#gesturePanel">♡ Gestures</a>
+        </nav>
+    </header>
+
+    <main class="page">
+        <section class="camera-panel panel">
+            <div class="camera-view" id="cameraFrame">
+                <video id="cameraVideo" autoplay playsinline muted></video>
+                <canvas id="cameraCanvas"></canvas>
+
+                <div class="camera-placeholder" id="cameraPlaceholder">
+                    <div class="placeholder-icon">◉</div>
+                    <h2>Your camera space</h2>
+                    <p>Start your camera to discover your gestures.</p>
+                </div>
+
+                <span class="camera-badge" id="cameraLiveLabel">
+                    <span class="status-dot"></span> CAMERA OFF
+                </span>
+
+                <span class="detection-badge">✋ Gesture Detection</span>
+
+                <div class="camera-hint" id="cameraHint">
+                    Your personal moment starts here 💜
+                </div>
+            </div>
+
+            <aside class="camera-info">
+                <div>
+                    <span class="eyebrow">MELOMIND VISION</span>
+                    <h2>Your gesture space</h2>
+                    <p>Make a hand gesture in front of your camera.</p>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon">✋</span>
+                    <div>
+                        <small>Detected Gesture</small>
+                        <strong id="detectedGesture">Waiting...</strong>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon">◎</span>
+                    <div>
+                        <small>Tracking Status</small>
+                        <strong id="trackingStatus">Camera not started</strong>
+                    </div>
+                </div>
+
+                <div class="camera-actions">
+                    <button id="startCamera" class="primary-button" type="button">
+                        ◉ Start Camera
+                    </button>
+                    <button id="stopCamera" class="secondary-button" type="button" disabled>
+                        Stop
+                    </button>
+                </div>
+
+                <p class="privacy-note">♡ Camera processing happens in your browser. Video is not sent to the chatbot.</p>
+            </aside>
+        </section>
+
+        <section class="mood-panel panel" id="moodPanel">
+            <div class="orb-column">
+                <div class="orb-stage mood-neutral" id="orbStage">
+                    <div class="orb-ring ring-one"></div>
+                    <div class="orb-ring ring-two"></div>
+                    <div class="orb-ring ring-three"></div>
+
+                    <div class="mood-orb" id="moodOrb">
+                        <div class="orb-shine"></div>
+                        <div class="orb-face">
+                            <span class="eye"></span>
+                            <span class="eye"></span>
+                            <span class="mouth"></span>
+                        </div>
+                    </div>
+
+                    <span class="sparkle sparkle-one">✦</span>
+                    <span class="sparkle sparkle-two">✧</span>
+                    <span class="sparkle sparkle-three">✦</span>
+                </div>
+
+                <div class="mood-caption">
+                    <strong id="moodLabel">Calm &amp; centered</strong>
+                    <span id="moodSubtitle">Your moment to breathe</span>
+                </div>
+            </div>
+
+            <div class="mood-content">
+                <div class="section-heading">
+                    <span class="heading-icon">✧</span>
+                    <div>
+                        <h2>Mood Mirror</h2>
+                        <p>Your gestures bring the orb to life</p>
+                    </div>
+                </div>
+
+                <div class="support-message">
+                    <span class="heart-icon">♡</span>
+                    <p id="moodMessage">
+                        Let's take a gentle pause together. 🌿
+                        Relax your shoulders and take a comfortable breath.
+                        You don't have to solve everything right now.
+                        Give yourself a little space.
+                    </p>
+                </div>
+
+                <div class="mood-colors" aria-label="Mood colors">
+                    <span class="color-dot purple"></span>
+                    <span class="color-dot mint"></span>
+                    <span class="color-dot peach"></span>
+                    <span class="color-dot pink"></span>
+                    <span class="color-dot blue"></span>
+                </div>
+
+                <div class="mood-options">
+                    <button class="mood-option" data-mood="calm" type="button">
+                        <span>❀</span>Calm
+                    </button>
+                    <button class="mood-option" data-mood="happy" type="button">
+                        <span>☀</span>Happy
+                    </button>
+                    <button class="mood-option" data-mood="love" type="button">
+                        <span>♡</span>Love
+                    </button>
+                    <button class="mood-option" data-mood="brave" type="button">
+                        <span>☆</span>Brave
+                    </button>
+                    <button class="mood-option" data-mood="support" type="button">
+                        <span>❋</span>Support
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="bottom-layout">
+            <section class="chat-panel panel" id="chatPanel">
+                <div class="chat-heading">
+                    <div class="chat-avatar">♡</div>
+                    <div>
+                        <h2>MeloMind Companion</h2>
+                        <p><span class="online-dot"></span> Here with you</p>
+                    </div>
+                    <span class="chat-sparkle">✧</span>
+                </div>
+
+                <div class="chat-messages" id="chatMessages" aria-live="polite">
+                    <div class="message-row bot-row">
+                        <div class="message-avatar">♡</div>
+                        <div class="message-bubble">
+                            Hi there! I'm happy you're here. Start the camera
+                            and try a hand gesture to see your Mood Mirror glow. 💜
+                        </div>
+                    </div>
+                </div>
+
+                <form class="chat-form" id="chatForm">
+                    <input
+                        id="chatInput"
+                        type="text"
+                        placeholder="Tell me what's on your mind..."
+                        autocomplete="off"
+                        required
+                    >
+                    <button type="submit" aria-label="Send message">➤</button>
+                </form>
+
+                <div class="chat-footer">✧ A kinder space for brighter days ✧</div>
+            </section>
+
+            <aside class="gesture-panel panel" id="gesturePanel">
+                <div class="gesture-heading">
+                    <span>✧</span>
+                    <div>
+                        <h2>Try a Gesture</h2>
+                        <p>Hold a gesture steady for a moment.</p>
+                    </div>
+                </div>
+
+                <div class="gesture-buttons">
+                    <button class="gesture-btn selected" data-gesture="Open Palm" type="button">
+                        <span>✋</span> Open Palm
+                    </button>
+                    <button class="gesture-btn" data-gesture="Thumbs Up" type="button">
+                        <span>👍</span> Thumbs Up
+                    </button>
+                    <button class="gesture-btn" data-gesture="Peace" type="button">
+                        <span>✌️</span> Peace
+                    </button>
+                    <button class="gesture-btn" data-gesture="Thumbs Down" type="button">
+                        <span>👎</span> Thumbs Down
+                    </button>
+                    <button class="gesture-btn" data-gesture="Fist" type="button">
+                        <span>✊</span> Fist
+                    </button>
+                    <button class="gesture-btn" data-gesture="OK" type="button">
+                        <span>👌</span> OK
+                    </button>
+                    <button class="gesture-btn" data-gesture="Shaka" type="button">
+                        <span>🤙</span> Shaka
+                    </button>
+                </div>
+
+                <p class="gesture-tip">✧ Hold a gesture for about 1.5 seconds for a response.</p>
+            </aside>
+        </section>
+
+        <footer class="page-footer">Made with care, for your mind. ♡</footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script src="gesture.js"></script>
+</body>
+</html>
